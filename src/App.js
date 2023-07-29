@@ -1,23 +1,42 @@
-import logo from './logo.svg';
+import About from './components/About';
+import Home from './components/Home';
+import Labs from './components/Labs';
+import Support from './components/Support';
+import NotFound from './components/NotFound';
+import Mainheader from './components/Mainheader';
+import { NavLink, Route , Routes } from 'react-router-dom';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav>
+        <ul>
+          <li>
+            <NavLink to='/' >Home</NavLink>
+          </li>
+          <li>
+          <NavLink to='/about' >About</NavLink>
+          </li>
+          <li>
+          <NavLink to='/support' >Support</NavLink>
+          </li>
+          <li>
+          <NavLink to='/labs' >Labs</NavLink>
+          </li>
+         
+        </ul>
+      </nav>
+      <Routes>
+        <Route path='/' element = {<Mainheader/>}>
+               {/* /* dedault route */ }
+          <Route index element = {<Home/>} /> 
+          <Route path='/about' element = {<About/>} />
+          <Route path='/support' element = {<Support/>} />
+          <Route path='/labs' element = {<Labs/>} />
+          <Route path='*' element = {<NotFound/>} />
+        </Route>  
+      </Routes>
     </div>
   );
 }
